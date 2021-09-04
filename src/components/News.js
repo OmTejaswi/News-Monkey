@@ -1,35 +1,52 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
+import Spinner from './Spinner';
 
 export class News extends Component {
 
     articles = [];
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             articles: this.articles,
             loading: false,
-            page: 1
+            page: [0, this.props.pageSize],
+            totalResults: undefined
         }
     }
 
     async componentDidMount() {
         // let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=1d8ab729b3644f1db00d67c6df897667';
         // let url = 'http://api.mediastack.com/v1/news?access_key=0cc49ca835fba27c5be458ea93513b6d&languages=en&countries=in';
+        this.setState({ loading: true })
         let url = 'https://saurav.tech/NewsAPI/top-headlines/category/health/in.json';
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles })
-        console.log(parsedData)
+        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
+    }
+
+    handleNxClick = () => {
+        this.setState({
+            page: [this.state.page[0] + this.props.pageSize, this.state.page[1] + this.props.pageSize]
+        })
+    }
+
+    handlePreClick = () => {
+        this.setState({
+            page: [this.state.page[0] - this.props.pageSize, this.state.page[1] - this.props.pageSize]
+        })
     }
 
     render() {
         return (
             <div className="container my-3">
                 <h2 className='text-center'>NewsMonkey - Top Headlines</h2>
+                <div className="text-center">
+                    {this.state.loading && <Spinner />}
+                </div>
                 <div className="row">
-                    {this.state.articles.map((element) => {
+                    {!this.state.loading && this.state.articles.slice(this.state.page[0], this.state.page[1]).map((element) => {
                         return (
                             <div className="col my-2" key={element.url}>
                                 <NewsItem title={element.title} description={element.description/*.slice(0,88)*/} newsUrl={element.url} imgUrl={element.urlToImage} />
@@ -39,8 +56,8 @@ export class News extends Component {
 
                     {/* Buttons */}
                     <div className="container d-flex justify-content-between">
-                        <button type="button" className="btn btn-dark">&laquo; Previous</button>
-                        <button type="button" className="btn btn-dark">Next &raquo;</button>
+                        <button disabled={this.state.page[0] === 0 && this.state.page[1] === this.props.pageSize} type="button" className="btn btn-dark" onClick={this.handlePreClick}>&laquo; Previous</button>
+                        <button disabled={this.state.totalResults < this.state.page[1]} type="button" className="btn btn-dark" onClick={this.handleNxClick}>Next &raquo;</button>
                     </div>
                 </div>
             </div>
