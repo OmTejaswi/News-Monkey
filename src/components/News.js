@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
 import Spinner from './Spinner';
+import PropTypes from 'prop-types';
 
 export class News extends Component {
+
+    static defaultProps = {
+        country: 'in',
+        page: [0,10],
+        category: 'general'
+    }
+    static propTypes = {
+        country: PropTypes.string,
+        page: PropTypes.array,
+        category: PropTypes.string,
+    }
 
     articles = [];
 
@@ -20,10 +32,17 @@ export class News extends Component {
         // let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=1d8ab729b3644f1db00d67c6df897667';
         // let url = 'http://api.mediastack.com/v1/news?access_key=0cc49ca835fba27c5be458ea93513b6d&languages=en&countries=in';
         this.setState({ loading: true })
-        let url = 'https://saurav.tech/NewsAPI/top-headlines/category/health/in.json';
+        let url = `https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/${this.props.country}.json`;
         let data = await fetch(url);
         let parsedData = await data.json();
         this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
+
+        let fire = "https://raw.githubusercontent.com/OmTejaswi/News-Monkey/gh-pages/firebase.json"
+        let fetfire = await fetch(fire);
+        let parfire = await fetfire.json();
+        setInterval(() => {
+            console.log(parfire)
+        }, 1000); 
     }
 
     handleNxClick = () => {

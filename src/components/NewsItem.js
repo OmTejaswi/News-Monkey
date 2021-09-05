@@ -11,7 +11,7 @@ export class NewsItem extends Component {
                     <div className="card-body mx-4">
                         <h6 className="card-title">{title}</h6>
                         <p className="card-text">{description}</p>
-                        <a href={newsUrl} target='_blank' className="btn btn-primary">Read More</a>
+                        <a href={newsUrl} target='_blank' rel="noreferrer" className="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
