@@ -7,7 +7,7 @@ export class News extends Component {
 
     static defaultProps = {
         country: 'in',
-        page: [0,10],
+        page: [0, 10],
         category: 'general'
     }
     static propTypes = {
@@ -36,13 +36,6 @@ export class News extends Component {
         let data = await fetch(url);
         let parsedData = await data.json();
         this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
-
-        let fire = "https://raw.githubusercontent.com/OmTejaswi/News-Monkey/gh-pages/firebase.json"
-        let fetfire = await fetch(fire);
-        let parfire = await fetfire.json();
-        setInterval(() => {
-            console.log(parfire)
-        }, 1000); 
     }
 
     handleNxClick = () => {

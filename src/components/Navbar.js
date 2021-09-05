@@ -1,14 +1,6 @@
 import React, { Component } from 'react'
-import News from './News'
 
 export class Navbar extends Component {
-
-    size = 9;
-
-    pgs = (event) => {
-        console.log(event.target.id)
-    }
-
     render() {
         return (
             <div>
@@ -59,7 +51,7 @@ export class Navbar extends Component {
                                         Page Size
                                     </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" id='5' onClick={this.pgs}>5</a></li>
+                                        <li><a className="dropdown-item">5</a></li>
                                         <li><a className="dropdown-item">10</a></li>
                                         <li><a className="dropdown-item">15</a></li>
                                         <li><a className="dropdown-item">20</a></li>
@@ -69,7 +61,6 @@ export class Navbar extends Component {
                         </div>
                     </div>
                 </nav>
-                <News pageSize={parseInt(this.size)} category='science' country='in' />
             </div>
         )
     }
