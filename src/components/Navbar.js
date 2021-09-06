@@ -5,7 +5,6 @@ import {
 
 export class Navbar extends Component {
     render() {
-
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,7 +38,7 @@ export class Navbar extends Component {
                                 {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                                 <button className="btn btn-outline-success" type="submit">Search</button> */}
 
-                                <li className="nav-item nav-link dropdown mx-2">
+                                {/* <li className="nav-item nav-link dropdown mx-2">
                                     <Link className="nav-link dropdown-toggle active" to="#" id="navbarDropdown" role="button" style={{ color: '#f1f1f1' }} data-bs-toggle="dropdown" aria-expanded="false">
                                         Page Size
                                     </Link>
@@ -49,7 +48,8 @@ export class Navbar extends Component {
                                         <li><Link className="dropdown-item">15</Link></li>
                                         <li><Link className="dropdown-item">20</Link></li>
                                     </ul>
-                                </li>
+                                </li> */}
+                                <li className="nav-link" style={{color: 'white'}}><div id="google_translate_element"></div></li>
                             </form>
                         </div>
                     </div>
