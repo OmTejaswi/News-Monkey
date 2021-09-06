@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/News-Monkey/static/css/main.35894f8c.chunk.css",
-    "main.js": "/News-Monkey/static/js/main.bbc1ead3.chunk.js",
+    "main.css": "/News-Monkey/static/css/main.ea4f9ad8.chunk.css",
+    "main.js": "/News-Monkey/static/js/main.4947ef00.chunk.js",
     "runtime-main.js": "/News-Monkey/static/js/runtime-main.e709fbcd.js",
     "static/js/2.11b4e46f.chunk.js": "/News-Monkey/static/js/2.11b4e46f.chunk.js",
     "static/js/3.5606acae.chunk.js": "/News-Monkey/static/js/3.5606acae.chunk.js",
@@ -11,7 +11,7 @@
   "entrypoints": [
     "static/js/runtime-main.e709fbcd.js",
     "static/js/2.11b4e46f.chunk.js",
-    "static/css/main.35894f8c.chunk.css",
-    "static/js/main.bbc1ead3.chunk.js"
+    "static/css/main.ea4f9ad8.chunk.css",
+    "static/js/main.4947ef00.chunk.js"
   ]
 }
