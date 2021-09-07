@@ -24,7 +24,7 @@ export class News extends Component {
             articles: this.articles,
             loading: false,
             page: [0, this.props.pageSize],
-            totalResults: undefined
+            totalResults: undefined,
         }
     }
 
@@ -35,7 +35,7 @@ export class News extends Component {
         let url = `https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/${this.props.country}.json`;
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
+        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false, json: parsedData })
     }
 
     handleNxClick = () => {
@@ -61,15 +61,15 @@ export class News extends Component {
                     {!this.state.loading && this.state.articles.slice(this.state.page[0], this.state.page[1]).map((element) => {
                         return (
                             <div className="col my-2" key={element.url}>
-                                <NewsItem title={element.title} description={element.description/*.slice(0,88)*/} newsUrl={element.url} imgUrl={element.urlToImage} time={element.publishedAt} />
+                                <NewsItem title={element.title} description={element.description/*.slice(0,88)*/} newsUrl={element.url} imgUrl={element.urlToImage} time={element.publishedAt} author={element.author} source={element.source.name} badge={this.props.badge} /*json={this.state.json}*//>
                             </div>
                         )
                     })}
 
                     {/* Buttons */}
                     <div className="container d-flex justify-content-between">
-                        <button disabled={this.state.page[0] === 0 && this.state.page[1] === this.props.pageSize} type="button" className="btn btn-dark" onClick={this.handlePreClick}>&laquo; Previous</button>
-                        <button disabled={this.state.totalResults < this.state.page[1]} type="button" className="btn btn-dark" onClick={this.handleNxClick}>Next &raquo;</button>
+                        <button disabled={this.state.page[0] === 0 && this.state.page[1] === this.props.pageSize} type="button" className="btn btn-dark my-3" onClick={this.handlePreClick}>&laquo; Previous</button>
+                        <button disabled={this.state.totalResults < this.state.page[1]} type="button" className="btn btn-dark my-3" onClick={this.handleNxClick}>Next &raquo;</button>
                     </div>
                 </div>
             </div>

@@ -6,45 +6,48 @@ import {
   HashRouter as Router,
   Switch,
   Route,
-  HashRouter
 } from "react-router-dom";
+import Feedback from './components/Feedback';
 
 
 export default class App extends Component {
+  pageSize = 12;
   render() {
     return (
       <div>
         <Router>
           <Navbar />
-          
           <Switch>
             {/* India */}
             <Route exact path='/'>
-              <News key='general' pageSize={20} category='general' country='in' />
+              <News key='general' pageSize={this.pageSize} category='general' country='in' badge={'primary'} />
             </Route>
             <Route exact path='/business'>
-              <News key='business' pageSize={20} category='business' country='in' />
+              <News key='business' pageSize={this.pageSize} category='business' country='in' badge={'warning'} />
             </Route>
             <Route exact path='/entertainment'>
-              <News key='entertainment' pageSize={20} category='entertainment' country='in' />
+              <News key='entertainment' pageSize={this.pageSize} category='entertainment' country='in' badge={'success'} />
             </Route>
             <Route exact path='/general'>
-              <News key='general' pageSize={20} category='general' country='in' />
+              <News key='general' pageSize={this.pageSize} category='general' country='in' badge={'primary'} />
             </Route>
             <Route exact path='/health'>
-              <News key='health' pageSize={20} category='health' country='in' />
+              <News key='health' pageSize={this.pageSize} category='health' country='in' badge={'danger'} />
             </Route>
             <Route exact path='/science'>
-              <News key='science' pageSize={20} category='science' country='in' />
+              <News key='science' pageSize={this.pageSize} category='science' country='in' badge={'info'} />
             </Route>
             <Route exact path='/sports'>
-              <News key='sports' pageSize={20} category='sports' country='in' />
+              <News key='sports' pageSize={this.pageSize} category='sports' country='in' badge={'info'} />
             </Route>
             <Route exact path='/technology'>
-              <News key='technology' pageSize={20} category='technology' country='in' />
+              <News key='technology' pageSize={this.pageSize} category='technology' country='in' badge={'primary'} />
+            </Route>
+            <Route exact path='/feedback'>
+              <Feedback/>
             </Route>
             {/* <Route exact path='/international'>
-              <News key='international' pageSize={20} category='international' country='in' />
+              <News key='international' pageSize={this.pageSize}  category='international' country='in' />
             </Route> */}
           </Switch>
         </Router>

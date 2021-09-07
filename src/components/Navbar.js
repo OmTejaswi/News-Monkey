@@ -33,9 +33,11 @@ export class Navbar extends Component {
                                 <li className="nav-item"><Link className="nav-link" to="/science">Science</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/sports">Sports</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/technology">Technology</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/Feedback">Feedback</Link></li>
                             </ul>
                             <form className="d-flex">
-                                {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                                <li className="nav-item nav-link" style={{color: 'white'}}><div id="google_translate_element"></div></li>
+                                {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" id='search'/>
                                 <button className="btn btn-outline-success" type="submit">Search</button> */}
 
                                 {/* <li className="nav-item nav-link dropdown mx-2">
@@ -49,7 +51,6 @@ export class Navbar extends Component {
                                         <li><Link className="dropdown-item">20</Link></li>
                                     </ul>
                                 </li> */}
-                                <li className="nav-link" style={{color: 'white'}}><div id="google_translate_element"></div></li>
                             </form>
                         </div>
                     </div>
