@@ -25,7 +25,6 @@ const firebaseConfig = {
     messagingSenderId: REACT_APP_API_MSI,
     appId: REACT_APP_API_APPID
 };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 

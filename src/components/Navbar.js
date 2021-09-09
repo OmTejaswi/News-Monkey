@@ -33,7 +33,7 @@ export class Navbar extends Component {
                                 <li className="nav-item"><Link className="nav-link" to="/science">Science</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/sports">Sports</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/technology">Technology</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/Feedback">Feedback</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/feedback">Feedback</Link></li>
                             </ul>
                             <form className="d-flex">
                                 <li className="nav-item nav-link" style={{color: 'white'}}><div id="google_translate_element"></div></li>
