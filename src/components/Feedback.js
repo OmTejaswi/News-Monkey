@@ -10,7 +10,6 @@ require('dotenv').config()
 // Hidden items from .env file
 
 const { REACT_APP_API_KEY, REACT_APP_API_AD, REACT_APP_API_DBURL, REACT_APP_API_PID, REACT_APP_API_SB, REACT_APP_API_MSI, REACT_APP_API_APPID } = process.env;
-
 // import 'firebase/database'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
