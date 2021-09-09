@@ -44,7 +44,7 @@ export default class App extends Component {
               <News key='technology' pageSize={this.pageSize} category='technology' country='in' badge={'primary'} />
             </Route>
             <Route exact path='/feedback'>
-              <Feedback/>
+              <Feedback key='feedback' />
             </Route>
             {/* <Route exact path='/international'>
               <News key='international' pageSize={this.pageSize}  category='international' country='in' />

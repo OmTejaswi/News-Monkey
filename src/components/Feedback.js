@@ -1,18 +1,30 @@
-import React , {useState} from 'react'
+import React, { useState } from 'react'
 
 // Import the functions you need from the SDKs you need
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import Alert from './Alert';
+require('dotenv').config()
+
+
+// Hidden items from .env file
+
+const { REACT_APP_API_KEY, REACT_APP_API_AD, REACT_APP_API_DBURL, REACT_APP_API_PID, REACT_APP_API_SB, REACT_APP_API_MSI, REACT_APP_API_APPID } = process.env;
+
 // import 'firebase/database'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    projectId: process.env.REACT_APP_API_KEY,
+    apiKey: REACT_APP_API_KEY,
+    authDomain: REACT_APP_API_AD,
+    databaseURL: REACT_APP_API_DBURL,
+    projectId: REACT_APP_API_PID,
+    storageBucket: REACT_APP_API_SB,
+    messagingSenderId: REACT_APP_API_MSI,
+    appId: REACT_APP_API_APPID
 };
-
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -25,14 +37,14 @@ export default function Feedback() {
 
     const showAlert = (type, message) => {
         setalert({
-          typ: type,
-          msg: message,
+            typ: type,
+            msg: message,
         })
-    
+
         setTimeout(() => {
-          setalert(null);
+            setalert(null);
         }, 2000);
-      }
+    }
 
     const submit = () => {
         let radio = document.getElementsByName('radio');
@@ -43,7 +55,7 @@ export default function Feedback() {
         } else if (radio[1].checked) {
             checked = 'bug'
         } else {
-            showAlert('danger','Please check out the radio button')
+            showAlert('danger', 'Please check out the radio button')
         }
         if (checked !== undefined) {
             if (document.getElementById('nameinput').value !== '' &&
@@ -54,9 +66,9 @@ export default function Feedback() {
                     count = data.val();
                     update(checked);
                 })
-                
+
             } else {
-                showAlert('danger','Please fill the text-boxes')
+                showAlert('danger', 'Please fill the text-boxes')
             }
         }
     }
@@ -72,7 +84,7 @@ export default function Feedback() {
         })
         document.getElementById('nameinput').value = '';
         document.getElementById('textarea').value = '';
-        showAlert('success','You feedback successfully submited. We will reach out to this feedback soon!')
+        showAlert('success', 'You feedback successfully submited. We will reach out to this feedback soon!')
     }
 
     return (
