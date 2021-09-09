@@ -110,7 +110,7 @@ export default function Feedback() {
                     <br />
                     <h3>Feedback:</h3>
                     <textarea rows="8" className="form-control" placeholder='Provide your feedback here' id='textarea' required></textarea>
-                    <button className="btn btn-primary my-4" type="submit" onClick={submit}>Button</button>
+                    <button className="btn btn-primary my-4" type="submit" onClick={submit}>Submit</button>
                 </div>
             </div>
 
