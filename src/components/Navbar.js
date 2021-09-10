@@ -6,8 +6,8 @@ import {
 export class Navbar extends Component {
     render() {
         return (
-            <div>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div style={{marginBottom: '80px'}}>
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style={{maxHeight: '60px'}}>
                     <div className="container-fluid">
                         <Link className="navbar-brand notranslate" to="/">NewsMonkey</Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,7 @@ export class Navbar extends Component {
                                 <li className="nav-item"><Link className="nav-link" to="/feedback">Feedback</Link></li>
                             </ul>
                             <form className="d-flex">
-                                <li className="nav-item nav-link" style={{color: 'white'}}><div id="google_translate_element"></div></li>
+                                <li className="nav-item nav-link" style={{ color: 'white' }}><div id="google_translate_element"></div></li>
                                 {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" id='search'/>
                                 <button className="btn btn-outline-success" type="submit">Search</button> */}
 
