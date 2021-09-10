@@ -6,7 +6,7 @@ import {
 export class Navbar extends Component {
     render() {
         return (
-            <div style={{marginBottom: '80px'}}>
+            <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                     <div className="container-fluid">
                         <Link className="navbar-brand notranslate" to="/">NewsMonkey</Link>

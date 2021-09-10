@@ -1,20 +1,10 @@
 import React, { useState } from 'react'
-
-// Import the functions you need from the SDKs you need
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 import Alert from './Alert';
-require('dotenv').config()
-
-
-// Hidden items from .env file
 
 const { REACT_APP_API_KEY, REACT_APP_API_AD, REACT_APP_API_DBURL, REACT_APP_API_PID, REACT_APP_API_SB, REACT_APP_API_MSI, REACT_APP_API_APPID } = process.env;
-// import 'firebase/database'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: REACT_APP_API_KEY,
     authDomain: REACT_APP_API_AD,
@@ -24,7 +14,6 @@ const firebaseConfig = {
     messagingSenderId: REACT_APP_API_MSI,
     appId: REACT_APP_API_APPID
 };
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 export default function Feedback() {
@@ -60,10 +49,14 @@ export default function Feedback() {
                 document.getElementById('nameinput').value !== ' ' &&
                 document.getElementById('textarea').value !== '' &&
                 document.getElementById('textarea').value !== ' ') {
-                db.ref(`${checked}/count`).once('value', (data) => {
-                    count = data.val();
-                    update(checked);
-                })
+                try {
+                    db.ref(`${checked}/count`).once('value', (data) => {
+                        count = data.val();
+                        update(checked);
+                    })
+                } catch (error) {
+                    showAlert('danger',error);
+                }
 
             } else {
                 showAlert('danger', 'Please fill the text-boxes')
@@ -112,8 +105,6 @@ export default function Feedback() {
                     <button className="btn btn-primary my-4" type="submit" onClick={submit}>Submit</button>
                 </div>
             </div>
-
-            {/* </center> */}
         </div>
     )
 }

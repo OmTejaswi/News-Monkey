@@ -52,7 +52,7 @@ export class News extends Component {
 
     render() {
         return (
-            <div className="container my-3">
+            <div className="container">
                 <h2 className='text-center my-3'>NewsMonkey - Top Headlines</h2>
                 <div className="text-center">
                     {this.state.loading && <Spinner />}
@@ -65,8 +65,6 @@ export class News extends Component {
                             </div>
                         )
                     })}
-
-                    {/* Buttons */}
                     <div className="container d-flex justify-content-between">
                         <button disabled={this.state.page[0] === 0 && this.state.page[1] === this.props.pageSize} type="button" className="btn btn-dark my-3" onClick={this.handlePreClick}>&laquo; Previous</button>
                         <button disabled={this.state.totalResults < this.state.page[1]} type="button" className="btn btn-dark my-3" onClick={this.handleNxClick}>Next &raquo;</button>
