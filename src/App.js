@@ -9,10 +9,35 @@ import {
 } from "react-router-dom";
 import Feedback from './components/Feedback';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
 
 export default class App extends Component {
   pageSize = 12;
   render() {
+
+    const { REACT_APP_API_KEY, REACT_APP_API_AD, REACT_APP_API_DBURL, REACT_APP_API_PID, REACT_APP_API_SB, REACT_APP_API_MSI, REACT_APP_API_APPID } = process.env;
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: REACT_APP_API_KEY,
+      authDomain: REACT_APP_API_AD,
+      databaseURL: REACT_APP_API_DBURL,
+      projectId: REACT_APP_API_PID,
+      storageBucket: REACT_APP_API_SB,
+      messagingSenderId: REACT_APP_API_MSI,
+      appId: REACT_APP_API_APPID
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
     return (
       <div>
         <Router>
