@@ -33,11 +33,11 @@ export default class App extends Component {
             <Route exact path='/health'>
               <News key='health' pageSize={this.pageSize} category='health' country='in' badge={'danger'} />
             </Route>
-            <Route exact path='/science'>
-              <News key='science' pageSize={this.pageSize} category='science' country='in' badge={'info'} />
-            </Route>
             <Route exact path='/sports'>
               <News key='sports' pageSize={this.pageSize} category='sports' country='in' badge={'info'} />
+            </Route>
+            <Route exact path='/science'>
+              <News key='science' pageSize={this.pageSize} category='science' country='in' badge={'info'} />
             </Route>
             <Route exact path='/technology'>
               <News key='technology' pageSize={this.pageSize} category='technology' country='in' badge={'primary'} />

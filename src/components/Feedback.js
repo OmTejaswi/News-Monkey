@@ -21,6 +21,7 @@ export default function Feedback() {
     let count;
     let db = firebase.database()
     const [alert, setalert] = useState(null);
+    document.title = 'Feedback - NewsMonkey'
 
     const showAlert = (type, message) => {
         setalert({
@@ -83,6 +84,7 @@ export default function Feedback() {
             <Alert alert={alert} />
             <br />
             <div className="container" >
+                <h3 className='text-center'>NewsMonkey - Feedback</h3>
                 <div className="mb-3">
                     <h3>Name:</h3>
                     <input type="name" style={{ width: '40%' }} className="form-control" placeholder="Enter your name" id='nameinput' required />
