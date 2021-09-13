@@ -92,13 +92,13 @@ export default function Feedback() {
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="radio" value="suggest" id="flexRadioDefault1" />
                         <label className="form-check-label" htmlFor="flexRadioDefault1">
-                            Suggestion
+                            <img src="https://static.thenounproject.com/png/2162450-200.png" style={{height: '20px'}} /> Suggestion
                         </label>
                     </div>
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="radio" value='bug' id="flexRadioDefault2" />
                         <label className="form-check-label" htmlFor="flexRadioDefault2">
-                            Bug
+                        <i class="bi bi-bug"></i> Bug Report 
                         </label>
                     </div>
                     <br />
