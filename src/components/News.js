@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NewsItem from './NewsItem'
 import Spinner from './Spinner';
 import PropTypes from 'prop-types';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export class News extends Component {
 
@@ -24,31 +25,30 @@ export class News extends Component {
             articles: this.articles,
             loading: false,
             page: [0, this.props.pageSize],
-            totalResults: undefined,
+            totalResults: 0,
         }
         document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`
     }
 
-    async componentDidMount() {
-        // let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=1d8ab729b3644f1db00d67c6df897667';
-        // let url = 'http://api.mediastack.com/v1/news?access_key=0cc49ca835fba27c5be458ea93513b6d&languages=en&countries=in';
+    async updateNews() {
         this.setState({ loading: true })
         let url = `https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/${this.props.country}.json`;
         let data = await fetch(url);
         let parsedData = await data.json();
         this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false, json: parsedData })
+        console.log(this.state.articles)
     }
 
-    handleNxClick = () => {
-        this.setState({
-            page: [this.state.page[0] + this.props.pageSize, this.state.page[1] + this.props.pageSize]
-        })
+    componentDidMount() {
+        // let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=1d8ab729b3644f1db00d67c6df897667';
+        // let url = 'http://api.mediastack.com/v1/news?access_key=0cc49ca835fba27c5be458ea93513b6d&languages=en&countries=in';
+        this.updateNews();
     }
 
-    handlePreClick = () => {
-        this.setState({
-            page: [this.state.page[0] - this.props.pageSize, this.state.page[1] - this.props.pageSize]
-        })
+    fetchMoreData = () => {
+        console.log(this.state.page[1])
+        this.setState({ page: [0, this.state.page[1] + this.props.pageSize] })
+        console.log(this.state.page[1])
     }
 
     capitalizeFirstLetter = (string) => {
@@ -63,16 +63,20 @@ export class News extends Component {
                     {this.state.loading && <Spinner />}
                 </div>
                 <div className="row">
-                    {!this.state.loading && this.state.articles.slice(this.state.page[0], this.state.page[1]).map((element) => {
+                    {this.state.articles.slice(0, this.state.page[1]).map((element) => {
                         return (
                             <div className="col my-2" key={element.url}>
-                                <NewsItem title={element.title} description={element.description/*.slice(0,88)*/} newsUrl={element.url} imgUrl={element.urlToImage} time={element.publishedAt} author={element.author} source={element.source.name} badge={this.props.badge} /*json={this.state.json}*//>
+                                <NewsItem title={element.title} description={element.description/*.slice(0,88)*/} newsUrl={element.url} imgUrl={element.urlToImage} time={element.publishedAt} author={element.author} source={element.source.name} badge={this.props.badge} /*json={this.state.json}*/ />
                             </div>
                         )
                     })}
-                    <div className="container d-flex justify-content-between">
-                        <button disabled={this.state.page[0] === 0 && this.state.page[1] === this.props.pageSize} type="button" className="btn btn-dark my-3" onClick={this.handlePreClick}>&laquo; Previous</button>
-                        <button disabled={this.state.totalResults < this.state.page[1]} type="button" className="btn btn-dark my-3" onClick={this.handleNxClick}>Next &raquo;</button>
+                    <div className="text-center">
+                        <InfiniteScroll
+                            dataLength={this.state.articles.length}
+                            next={this.fetchMoreData}
+                            hasMore={this.state.totalResults >= this.state.page[1]}
+                            loader={<Spinner />}
+                        />
                     </div>
                 </div>
             </div>
