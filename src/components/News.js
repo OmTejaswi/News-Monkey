@@ -35,8 +35,7 @@ export class News extends Component {
         let url = `https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/${this.props.country}.json`;
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false, json: parsedData })
-        console.log(this.state.articles)
+        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, json: parsedData })        
     }
 
     componentDidMount() {
@@ -46,9 +45,12 @@ export class News extends Component {
     }
 
     fetchMoreData = () => {
-        console.log(this.state.page[1])
-        this.setState({ page: [0, this.state.page[1] + this.props.pageSize] })
-        console.log(this.state.page[1])
+        if(this.state.totalResults > this.state.page[1]) {
+            this.setState({loading: true, page: [0, this.state.page[1] + this.props.pageSize]})
+            console.log('yes')
+        } else {
+            this.setState({loading: false})
+        }
     }
 
     capitalizeFirstLetter = (string) => {
@@ -60,7 +62,7 @@ export class News extends Component {
             <div className="container">
                 <h3 className='text-center my-4'>NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h3>
                 <div className="text-center">
-                    {this.state.loading && <Spinner />}
+                    {/* {this.state.loading && <Spinner />} */}
                 </div>
                 <div className="row">
                     {this.state.articles.slice(0, this.state.page[1]).map((element) => {
@@ -71,12 +73,13 @@ export class News extends Component {
                         )
                     })}
                     <div className="text-center">
-                        <InfiniteScroll
+                       {this.state.loading && <InfiniteScroll
                             dataLength={this.state.articles.length}
+                            // pullDownToRefreshThreshold={100}
                             next={this.fetchMoreData}
-                            hasMore={this.state.totalResults >= this.state.page[1]}
+                            hasMore={this.state.loading}
                             loader={<Spinner />}
-                        />
+                        />}
                     </div>
                 </div>
             </div>

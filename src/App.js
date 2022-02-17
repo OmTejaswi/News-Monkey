@@ -10,7 +10,7 @@ import {
 import Feedback from './components/Feedback';
 
 export default class App extends Component {
-  pageSize = 12;
+  pageSize = 6;
   render() {
     return (
       <div>
@@ -30,7 +30,7 @@ export default class App extends Component {
             <Route exact path='/general'>
               <News key='general' pageSize={this.pageSize} category='general' country='in' badge={'primary'} />
             </Route>
-            <Route exact path='/health'>
+            <Route exact path='/lth'>
               <News key='health' pageSize={this.pageSize} category='health' country='in' badge={'danger'} />
             </Route>
             <Route exact path='/sports'>
