@@ -26,14 +26,14 @@ export class Navbar extends Component {
                                     <option value="International">International</option>
                                 </select> */}
 
-                                <li className="nav-item"><Link className="nav-link" to="/general">General</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/business">Business</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/entertainment">Entertainment</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/health">Health</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/sports">Sports</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/science">Science</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/technology">Technology</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/feedback">Feedback</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/News-Monkey/general">General</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/News-Monkey/business">Business</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/News-Monkey/entertainment">Entertainment</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/News-Monkey/health">Health</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/News-Monkey/sports">Sports</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/News-Monkey/science">Science</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/News-Monkey/technology">Technology</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/News-Monkey/feedback">Feedback</Link></li>
                             </ul>
                             <form className="d-flex">
                                 <li className="nav-item nav-link"><div id="google_translate_element" style={{ color: 'white', height: '30px', position: 'relative', bottom: '0px' }}></div></li>

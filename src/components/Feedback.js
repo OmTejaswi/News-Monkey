@@ -98,7 +98,7 @@ export default function Feedback() {
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="radio" value='bug' id="flexRadioDefault2" />
                         <label className="form-check-label" htmlFor="flexRadioDefault2">
-                        <i class="bi bi-bug"></i> Bug Report 
+                        <i className="bi bi-bug"></i> Bug Report 
                         </label>
                     </div>
                     <br />
