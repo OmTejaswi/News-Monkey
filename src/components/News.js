@@ -55,17 +55,6 @@ export class News extends Component {
         {
             this.setState({loading: false})
         }
-        
-       
-        // console.log('entered')
-        // if(this.state.totalResults > this.state.page[1]) {
-        //     this.setState({loading: true, page: [0, this.state.page[1] + this.props.pageSize]})
-            console.log(this.state.page[1])
-            console.log(this.state.totalResults, this.state.page[1], this.state.articles.length)
-        // } else {
-        //     this.setState({loading: true})
-            
-        // }
     }
 
     capitalizeFirstLetter = (string) => {
