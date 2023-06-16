@@ -35,7 +35,7 @@ export class News extends Component {
         let url = `https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/${this.props.country}.json`;
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, json: parsedData })        
+        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, json: parsedData, loading: true })        
     }
 
     componentDidMount() {
@@ -45,12 +45,27 @@ export class News extends Component {
     }
 
     fetchMoreData = () => {
-        if(this.state.totalResults > this.state.page[1]) {
-            this.setState({loading: true, page: [0, this.state.page[1] + this.props.pageSize]})
-            console.log('yes')
-        } else {
+       
+        if(this.state.totalResults > this.state.page[1]){
+            this.setState({loading: false})
+            this.setState({ page: [0, this.state.page[1] + this.props.pageSize]})
+            this.setState({loading: true})
+        } 
+        else if(this.state.totalResults <= this.state.page[1])
+        {
             this.setState({loading: false})
         }
+        
+       
+        // console.log('entered')
+        // if(this.state.totalResults > this.state.page[1]) {
+        //     this.setState({loading: true, page: [0, this.state.page[1] + this.props.pageSize]})
+            console.log(this.state.page[1])
+            console.log(this.state.totalResults, this.state.page[1], this.state.articles.length)
+        // } else {
+        //     this.setState({loading: true})
+            
+        // }
     }
 
     capitalizeFirstLetter = (string) => {
@@ -75,7 +90,7 @@ export class News extends Component {
                     <div className="text-center">
                        {this.state.loading && <InfiniteScroll
                             dataLength={this.state.articles.length}
-                            // pullDownToRefreshThreshold={100}
+                            pullDownToRefreshThreshold={0.1}
                             next={this.fetchMoreData}
                             hasMore={this.state.loading}
                             loader={<Spinner />}
